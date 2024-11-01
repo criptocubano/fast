@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HiveConvert</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body class="background-red">
+    <div class="header">
+        <h1>HiveConvert</h1>
+        <p>Conoce el precio de Hive en el Mercado Informal</p>
+    </div>
+    <div class="container">
+        <form action="/convert">
+            <div class="input-group">
+                <label for="currency1">Moneda</label>
+                <div class="input-select-group">
+                    <select id="currency1" name="currency1" onchange="changeBackground(this)">
+                        <option value="Hive" selected>Hive</option>
+                        <option value="HBD">HBD</option>
+                    </select>
+                    <input type="text" id="amount1" name="amount1" placeholder="Cantidad">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="currency2">Convertir a</label>
+                <div class="input-select-group">
+                    <select id="currency2" name="currency2">
+                        
+                        <option value="cup">CUP</option>
+                        
+                    </select>
+                    <input type="text" id="amount2" name="amount2" placeholder="Cantidad">
+                </div>
+            </div>
+
+            <button type="submit" id="convert-button">Convertir</button>
+        </form>
+    </div>
+
+    <script>
+        function changeBackground(selectElement) {
+            const isHive = selectElement.value === 'Hive';
+            document.body.className = isHive ? 'background-red' : 'background-green';
+            document.querySelectorAll('select, input[type="text"]').forEach(element => {
+                element.style.borderColor = isHive ? '#ff4d4d' : '#00c853';
+            });
+            document.getElementById('convert-button').style.backgroundColor = isHive ? '#ff4d4d' : '#00c853';
+        }
+    </script>
+</body>
+</html>
